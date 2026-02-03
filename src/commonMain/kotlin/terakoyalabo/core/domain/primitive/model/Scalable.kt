@@ -11,12 +11,5 @@ interface Scalable<T> : Comparable<T> {
     val isZero: Boolean
 
     val abs: T
-
-    fun invert(): T
-
-    // 演算子もインターフェースに定義可能
-    operator fun plus(other: T): T
-    operator fun minus(other: T): T
-    operator fun times(other: T): T
-    operator fun div(other: T): T
+    val inversion: T
 }
