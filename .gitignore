@@ -1,8 +1,3 @@
-# --- 寺子屋ラボ 外交用スクリプトの防衛 ---
-# 代表のMBP2018でのみ実行されるべき秘密の道
-snapshots.sh
-releases.sh
-
 # --- Gradle & JVM ---
 .gradle/
 build/
