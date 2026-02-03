@@ -50,7 +50,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(libs.terakoyalabo.core)
+            implementation(project(":core"))
         }
         commonTest.dependencies {  }
         jvmTest.dependencies {

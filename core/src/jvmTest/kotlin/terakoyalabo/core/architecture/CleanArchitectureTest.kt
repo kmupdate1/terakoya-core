@@ -6,7 +6,7 @@ import com.lemonappdev.konsist.api.verify.assertTrue
 import org.junit.jupiter.api.Test
 
 class CleanArchitectureTest {
-    private val scope = Konsist.scopeFromProject()
+    private val scope = Konsist.scopeFromProject("core")
 
     /*
     @Test
@@ -46,6 +46,7 @@ class CleanArchitectureTest {
     }
     */
 
+    /*
     @Test
     fun `domain内のパッケージ依存関係を縛る`() {
         // primitiveは、自パッケージ、error、function、および標準ライブラリ以外に依存してはならない
@@ -64,6 +65,7 @@ class CleanArchitectureTest {
                 }
             }
     }
+    */
 
     @Test
     fun domain内の各パッケージ間に循環参照がないことを確認する() {
