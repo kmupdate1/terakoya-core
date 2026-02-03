@@ -1,3 +1,4 @@
+/*
 // gradle/sonar.gradle.kts
 
 // ルートプロジェクトへの設定
