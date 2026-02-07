@@ -15,10 +15,10 @@ subprojects {
                     // ルートプロジェクトで定義した変数を参照
                     val isRelease = rootProject.extra["isRelease"] as? Boolean ?: false
                     val repoType = if (isRelease) "releases" else "snapshots"
-                    val domain = System.getenv("TERAKOYALABO_DOMAIN") ?: "https://terakoyalabo.live-on.net"
+                    val domain = System.getenv("TERAKOYALABO_DEV_DOMAIN") ?: "https://67e7-160-86-90-2.ngrok-free.app"
 
                     name = "TerakoyaNexus"
-                    url = uri("$domain/repository/terakoyalabo-library-$repoType")
+                    url = uri("$domain/nexus/repository/terakoyalabo-library-$repoType")
 
                     credentials {
                         username = System.getenv("TERAKOYA_NEXUS_USERNAME")
