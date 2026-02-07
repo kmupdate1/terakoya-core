@@ -5,7 +5,7 @@ plugins {
 
 // コマンド実行時に -Prelease=true をつけた時だけ本番モード
 val isRelease = project.hasProperty("release") && project.property("release") == "true"
-val currentVersion = rootProject.findProperty("library.version")?.toString() ?: "unspecified"
+val currentVersion = rootProject.findProperty("version.library")?.toString() ?: "unspecified"
 
 extra["isRelease"] = isRelease
 

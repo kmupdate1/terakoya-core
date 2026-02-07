@@ -13,15 +13,16 @@ subprojects {
             repositories {
                 maven {
                     // ルートプロジェクトで定義した変数を参照
-                    val isRelease = rootProject.extra["isRelease"] as Boolean
+                    val isRelease = rootProject.extra["isRelease"] as? Boolean ?: false
                     val repoType = if (isRelease) "releases" else "snapshots"
-                    val domain = System.getenv("TERAKOYALABO_DOMAIN")
+                    val domain = System.getenv("TERAKOYALABO_DOMAIN") ?: "https://terakoyalabo.live-on.net"
 
+                    name = "TerakoyaNexus"
                     url = uri("$domain/repository/terakoyalabo-library-$repoType")
 
                     credentials {
-                        username = System.getenv("NEXUS_USERNAME")
-                        password = System.getenv("NEXUS_PASSWORD")
+                        username = System.getenv("TERAKOYA_NEXUS_USERNAME")
+                        password = System.getenv("TERAKOYA_NEXUS_PASSWORD")
                     }
                 }
             }
