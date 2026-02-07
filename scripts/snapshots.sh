@@ -11,8 +11,8 @@ echo "🏛️ [Location] 現在地をプロジェクトルート $(pwd) に固�
 echo "🚀 [Snapshots] 探求の成果を Nexus へ配送中..."
 
 # 環境変数の存在チェック（防衛策）
-if [ -z "$NEXUS_USERNAME" ] || [ -z "$NEXUS_PASSWORD" ]; then
-    echo "❌ Error: 環境変数 NEXUS_USERNAME または NEXUS_PASSWORD が設定されていません。"
+if [ -z "$TERAKOYA_NEXUS_USERNAME" ] || [ -z "$TERAKOYA_NEXUS_PASSWORD" ]; then
+    echo "❌ Error: 環境変数 TERAKOYA_NEXUS_USERNAME または TERAKOYA_NEXUS_PASSWORD が設定されていません。"
     echo "代表の MBP2018 で export されているか確認してください。"
     exit 1
 fi
