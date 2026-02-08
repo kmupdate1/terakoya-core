@@ -20,13 +20,12 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-
+            implementation(project(":core"))
         }
         commonTest.dependencies {
 
         }
         jvmMain.dependencies {
-
         }
         jvmTest.dependencies {
 
