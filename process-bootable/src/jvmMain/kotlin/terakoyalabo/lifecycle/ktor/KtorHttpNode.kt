@@ -4,12 +4,12 @@ import io.ktor.server.application.*
 import terakoyalabo.core.domain.identity.model.HeartBeat
 import terakoyalabo.core.domain.identity.model.Identity
 import terakoyalabo.core.domain.logic.sl
-import terakoyalabo.lifecycle.node.NodeStatus
+import terakoyalabo.lifecycle.node.Node
 import terakoyalabo.lifecycle.node.ServiceNode
 import terakoyalabo.lifecycle.node.StatusPublishable
 
 abstract class KtorHttpNode : ServiceNode {
-    private var node: NodeStatus = NodeStatus()
+    private var node: Node = Node()
 
     fun bind(application: Application) {
         application.monitor.apply {
