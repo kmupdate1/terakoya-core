@@ -1,4 +1,4 @@
-package terakoyalabo.auth.annotation
+package terakoyalabo.authjwt.annotation
 
 @DslMarker
 annotation class TerakoyaAuthDsl

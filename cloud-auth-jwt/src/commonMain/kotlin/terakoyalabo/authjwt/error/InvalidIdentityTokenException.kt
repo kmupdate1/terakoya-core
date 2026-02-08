@@ -1,4 +1,4 @@
-package terakoyalabo.auth.error
+package terakoyalabo.authjwt.error
 
 import terakoyalabo.core.error.LawOfTerakoyaException
 

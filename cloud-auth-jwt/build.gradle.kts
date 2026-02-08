@@ -23,10 +23,19 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(project(":core"))
+            implementation(project(":cloud-auth"))
         }
         commonTest.dependencies {}
         jvmMain.dependencies {
             implementation(libs.ktor.server.auth.jwt)
+        }
+        jvmTest.dependencies {
+            implementation(libs.ktor.server.core)
+            implementation(libs.ktor.server.cio)
+            implementation(libs.ktor.server.netty)
+            implementation(libs.ktor.server.auth.jwt)
+
+            implementation(project(":cloud-auth"))
         }
     }
 
