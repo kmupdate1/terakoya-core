@@ -14,20 +14,40 @@ abstract class KtorHttpNode : ServiceNode {
     fun bind(application: Application) {
         application.monitor.apply {
             subscribe(ApplicationStarting) {
+                onEndue().onSuccess {
+                    node = node.copy(
+                        statusId = Identity.gen(),
+                        status = StatusPublishable.NodeStatus.ALIVE,
+                        timestamp = HeartBeat.now(),
+                        message = "Node endued successfully",
+                    )
+                }.onFailure {
+                    node = node.copy(
+                        statusId = Identity.gen(),
+                        status = StatusPublishable.NodeStatus.ALIVE,
+                        timestamp = HeartBeat.now(),
+                        message = "Node endue failed: ${it.message}",
+                    )
+
+                    throw it
+                }
+
                 onVerify().onSuccess {
                     node = node.copy(
                         statusId = Identity.gen(),
                         status = StatusPublishable.NodeStatus.ALIVE,
                         timestamp = HeartBeat.now(),
-                        message = "Application launched successfully",
+                        message = "Node launched successfully",
                     )
                 }.onFailure {
                     node = node.copy(
                         statusId = Identity.gen(),
                         status = StatusPublishable.NodeStatus.DEAD,
                         timestamp = HeartBeat.now(),
-                        message = "Application launched failure: ${it.message}",
+                        message = "Node launched failed: ${it.message}",
                     )
+
+                    throw it
                 }
             }
             subscribe(ApplicationStopping) {
@@ -36,7 +56,7 @@ abstract class KtorHttpNode : ServiceNode {
                         statusId = Identity.gen(),
                         status = StatusPublishable.NodeStatus.RETIRING,
                         timestamp = HeartBeat.now(),
-                        message = "Application stopped successfully",
+                        message = "Node stopped successfully",
                     )
                 }
             }
@@ -46,7 +66,7 @@ abstract class KtorHttpNode : ServiceNode {
                         statusId = Identity.gen(),
                         status = StatusPublishable.NodeStatus.DEAD,
                         timestamp = HeartBeat.now(),
-                        message = "Application killed successfully",
+                        message = "Node killed successfully",
                     )
                 }
             }

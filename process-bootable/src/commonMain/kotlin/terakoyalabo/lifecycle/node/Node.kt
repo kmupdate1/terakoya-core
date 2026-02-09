@@ -9,5 +9,5 @@ data class Node(
     val statusId: Identity = Identity.gen(),
     val status: NodeStatus = NodeStatus.STARTING,
     val timestamp: HeartBeat = HeartBeat.now(),
-    val message: String? = "Application loaded successfully",
+    val message: String? = "Node loaded successfully",
 )

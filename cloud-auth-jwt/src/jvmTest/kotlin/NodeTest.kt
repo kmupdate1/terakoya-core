@@ -1,7 +1,7 @@
 import terakoyalabo.core.domain.primitive.model.ScalarL
 import terakoyalabo.lifecycle.ktor.KtorHttpNode
 
-class ApplicationTest : KtorHttpNode() {
+class NodeTest : KtorHttpNode() {
     /*
     private val node by lazy {
         createNode { TerakoyaSettings() }.also { it.boot() }
@@ -14,6 +14,12 @@ class ApplicationTest : KtorHttpNode() {
         )
     }
      */
+
+    override fun onEndue(): Result<Unit> {
+        println("ここでFeatureを適合")
+        TODO("Not yet implemented")
+    }
+
     override fun onVerify(): Result<Unit> {
         println("ここでリソースの状態をチェック開始")
         TODO("Not yet implemented")
