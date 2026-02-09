@@ -36,6 +36,7 @@ kotlin {
             implementation(libs.ktor.server.auth.jwt)
 
             implementation(project(":cloud-auth"))
+            implementation(project(":process-bootable"))
         }
     }
 

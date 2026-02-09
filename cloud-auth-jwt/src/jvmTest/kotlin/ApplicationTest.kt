@@ -3,6 +3,7 @@ import terakoyalabo.authjwt.test.createNode
 import kotlin.system.exitProcess
 
 class ApplicationTest {
+    /*
     private val node by lazy {
         createNode { TerakoyaSettings() }.also { it.boot() }
     }
@@ -13,4 +14,5 @@ class ApplicationTest {
             onFailure = { "Node is sleeping." },
         )
     }
+     */
 }

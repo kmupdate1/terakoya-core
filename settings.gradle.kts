@@ -1,4 +1,4 @@
-rootProject.name = "terakoyalabo-library"
+rootProject.name = "library"
 
 include(":core")
 include(":math")
