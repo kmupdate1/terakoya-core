@@ -1,7 +1,7 @@
 package terakoyalabo.foundation.ktor
 
 import io.ktor.server.application.*
-import io.ktor.server.routing.Route
+import io.ktor.server.routing.*
 import terakoyalabo.foundation.feature.Endurable
 
 abstract class KtorRouteFeature<TConfiguration : Any>(

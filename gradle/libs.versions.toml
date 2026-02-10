@@ -7,6 +7,7 @@ archunit_junit5 = "1.3.0"
 lemonappdev = "0.17.0"
 junit_jupiter = "5.10.2"
 sonarqube = "7.2.2.6593"
+logback = "1.5.28"
 
 [libraries]
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinx_datetime" }
@@ -23,6 +24,7 @@ ktor-serialization-json = { group = "io.ktor", name = "ktor-serialization-kotlin
 tngtech-archunit-junit5 = { group = "com.tngtech.archunit", name = "archunit-junit5", version.ref = "archunit_junit5" }
 lemonappdev-konsist = { group = "com.lemonappdev", name = "konsist", version.ref = "lemonappdev" }
 junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junit_jupiter" }
+logback-classic = { group = "ch.qos.logback", name = "logback-classic", version.ref = "logback" }
 
 [plugins]
 # KMPプラグイン

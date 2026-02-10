@@ -36,6 +36,10 @@ kotlin {
             implementation(libs.ktor.server.auth.jwt)
             implementation(libs.ktor.server.content.negotiation)
             implementation(libs.ktor.serialization.json)
+
+            implementation(libs.logback.classic)
+
+            implementation(kotlin("test"))
         }
     }
 }

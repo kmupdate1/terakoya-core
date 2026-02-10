@@ -15,7 +15,7 @@ abstract class KtorApplicationKernel(
     private val configuration: KernelConfiguration,
 ) : KtorHttpKernelLifecycle() {
     override fun onEndue(): Result<Unit> = runCatching {
-        println("機能が登録されました")
+        println("[1] 機能が登録されました")
         applicationEndurables.forEach { endurable -> endurable.endue(context = server.application) }
         server.application.routing {
             routeEndurables.forEach { endurable -> endurable.endue(context = this) }
@@ -23,25 +23,28 @@ abstract class KtorApplicationKernel(
     }
 
     override fun onVerify(): Result<Unit> = runCatching {
-        println("ヘルスチェックが終了しました")
+        println("[2] ヘルスチェックが終了しました")
     }
 
     override fun onLaunch(): Result<Unit> = runCatching {
-        println("アプリケーションが起動されました")
-        server.start(wait = true)
+        println("[3] アプリケーションが起動されました")
+        // server.start(wait = true)
     }
 
     override fun onRetire(timeoutMillis: ScalarL): Result<Unit> = runCatching {
-        println("アプリケーションが稼働を終了しました")
+        println("[4] アプリケーションが稼働を終了しました")
         server.stop(1000L, 1000L, TimeUnit.MILLISECONDS)
     }
 
     override fun onRelease(): Result<Unit> = runCatching {
-        println("アプリケーションがリソースを返却しました。")
+        println("[5] アプリケーションがリソースを返却しました。")
         exitProcess(0)
     }
 
-    fun run(): Result<Unit> = runCatching { bind(application = server.application) }
+    fun run(): Result<Unit> = runCatching {
+        bind(application = server.application)
+        server.start(wait = true)
+    }
 
     private val server: EmbeddedServer<*, *> = embeddedServer(
         factory = when (configuration.soil) {
@@ -71,12 +74,12 @@ abstract class KtorApplicationKernel(
         private val applicationEndurables = mutableListOf<Endurable<Application, Any>>()
         private val routeEndurables = mutableListOf<Endurable<Route, Any>>()
 
-        fun apply(endurable: Endurable<Application, Any>): Builder {
+        fun applyApp(endurable: Endurable<Application, Any>): Builder {
             applicationEndurables.add(endurable)
             return this
         }
 
-        fun apply(endurable: Endurable<Route, Any>): Builder {
+        fun applyRoute(endurable: Endurable<Route, Any>): Builder {
             routeEndurables.add(endurable)
             return this
         }
@@ -94,7 +97,7 @@ enum class NodeSoil {
 
 data class KernelConfiguration(
     val port: Int = 8080,
-    val host: String = "127.0.0.1",
+    val host: String = "0.0.0.0",
     val environment: String = "DEV",
     val soil: NodeSoil = NodeSoil.NATIVE
 )
